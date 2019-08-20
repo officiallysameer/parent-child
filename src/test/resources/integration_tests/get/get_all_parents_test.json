@@ -1,0 +1,33 @@
+{
+  "scenarioName": "Fetch all the parents @@Sameer",
+  "steps": [
+    {
+      "name": "fetch_all_parents",
+      "url": "/parents",
+      "operation": "GET",
+      "request": {
+      },
+      "assertions": {
+        "status": 200,
+        "body.SIZE": 3,
+        "body": [
+          {
+            "id": 1,
+            "firstName": "Donald",
+            "children.SIZE": 2,
+            "children": [
+              {
+                "id": 3,
+                "firstName": "Ivanka"
+              },
+              {
+                "id": 4,
+                "firstName": "Danny"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

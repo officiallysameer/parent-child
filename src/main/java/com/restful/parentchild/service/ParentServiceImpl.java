@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ParentServiceImpl implements ParentService {
@@ -20,7 +21,7 @@ public class ParentServiceImpl implements ParentService {
     }
 
     @Override
-    public Person getParentById(int id) {
+    public Optional<Person> getParentById(int id) {
         return parentRepository.findParentById(id);
     }
 }

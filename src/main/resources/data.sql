@@ -28,9 +28,11 @@ INSERT INTO person (title, first_name, last_name, email_address, date_of_birth, 
 VALUES ('Mr', 'Donald', 'Trump', 'donald@trump.com', '1955-06-23', 'true', 'male', 'president'),
        ('Mrs', 'Melina', 'Trump', 'melina@trump.com', '1968-05-12', 'true', 'female', ''),
        (null, 'Ivanka', 'Trump', 'ivanka@trump.com', '1984-11-09', 'false', 'female', ''),
+       (null, 'Danny', 'Trump', 'danny@trump.com', '1986-05-16', 'false', 'male', ''),
        ('Mr', 'Sherlock', 'Holmes', 'sherlock@gmail.com', '1934-12-28', 'true', 'male', '');
 
 INSERT INTO parent_children (parent_id, child_id)
 VALUES (1, 3),
-       (2, 3);
+       (2, 3),
+       (1, 4);
 

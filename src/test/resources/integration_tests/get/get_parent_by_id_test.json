@@ -1,0 +1,45 @@
+{
+  "scenarioName": "Given an id, fetch the parent will all the children @@Sameer",
+  "steps": [
+    {
+      "name": "fetch_parent_with_2_children",
+      "url": "/parents/1",
+      "operation": "GET",
+      "request": {
+      },
+      "assertions": {
+        "status": 200,
+        "body": {
+          "id": 1,
+          "firstName": "Donald",
+          "children.SIZE": 2,
+          "children": [
+            {
+              "id": 3,
+              "firstName": "Ivanka"
+            },
+            {
+              "id": 4,
+              "firstName": "Danny"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "fetch_parent_with_0_children",
+      "url": "/parents/5",
+      "operation": "GET",
+      "request": {
+      },
+      "assertions": {
+        "status": 200,
+        "body": {
+          "id": 5,
+          "firstName": "Sherlock",
+          "children": "$NULL"
+        }
+      }
+    }
+  ]
+}

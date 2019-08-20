@@ -34,7 +34,7 @@ public class ParentServiceImplTest {
         parentList.add(new Person(true, "Mr", "John", "Smith", "john@smith.com",
                 "1978-07-13", Gender.male, "second name", null));
 
-        Mockito.when(parentRepository.findAll())
+        Mockito.when(parentRepository.findAllParents())
                 .thenReturn(parentList);
     }
 
