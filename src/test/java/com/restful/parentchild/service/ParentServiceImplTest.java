@@ -1,7 +1,8 @@
 package com.restful.parentchild.service;
 
 import com.restful.parentchild.ParentRepository;
-import com.restful.parentchild.model.Parents;
+import com.restful.parentchild.model.Gender;
+import com.restful.parentchild.model.Person;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,20 +30,19 @@ public class ParentServiceImplTest {
 
     @Before
     public void setUp() {
-        List<Parents> parentsList = new ArrayList<>();
-        parentsList.add(new Parents("Mr", "John", "Smith", "john@smith.com",
-                "1978-07-13", "second name", null));
+        List<Person> parentList = new ArrayList<>();
+        parentList.add(new Person(true, "Mr", "John", "Smith", "john@smith.com",
+                "1978-07-13", Gender.male, "second name", null));
 
         Mockito.when(parentRepository.findAll())
-                .thenReturn(parentsList);
+                .thenReturn(parentList);
     }
 
     @Test
     public void getAllParents() {
 
-        List<Parents> parentsList = parentService.getAllParents();
-
-        assertThat(parentsList, hasSize(1));
+        List<Person> parentList = parentService.getAllParents();
+        assertThat(parentList, hasSize(1));
     }
 
     @TestConfiguration

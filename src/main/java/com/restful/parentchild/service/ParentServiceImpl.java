@@ -1,7 +1,7 @@
 package com.restful.parentchild.service;
 
 import com.restful.parentchild.ParentRepository;
-import com.restful.parentchild.model.Parents;
+import com.restful.parentchild.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +13,15 @@ public class ParentServiceImpl implements ParentService {
     @Autowired
     private ParentRepository parentRepository;
 
+
     @Override
-    public List<Parents> getAllParents() {
+    public List<Person> getAllParents() {
         return parentRepository.findAll();
+    }
+
+    //TIO
+    @Override
+    public Person getParentById(int id) {
+        return parentRepository.findById(id);
     }
 }

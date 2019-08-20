@@ -1,15 +1,20 @@
 package com.restful.parentchild.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Parents {
+public class Person {
 
     @Id
-    private String id;
+    private int id;
+
+    private boolean isParent;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String title;
 
     @Column(name = "first_name")
@@ -24,30 +29,48 @@ public class Parents {
     @Column(name = "date_of_birth")
     private String dateOfBirth;
 
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
     @Column(name = "second_name")
     private String secondName;
 
     @OneToMany
-    @JoinTable(name = "children",
+    @JoinTable(name = "parent_children",
             joinColumns =
             @JoinColumn(name = "parent_id", referencedColumnName = "ID"),
             inverseJoinColumns =
             @JoinColumn(name = "child_id", referencedColumnName = "ID"))
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    private List<Parents> children;
+    private List<Person> children;
 
-    public Parents(String title, String firstName, String lastName, String emailAddress, String dateOfBirth, String secondName, List<Parents> children) {
+    public Person() {
+    }
+
+    public Person(boolean isParent, String title, String firstName, String lastName, String emailAddress,
+                  String dateOfBirth, Gender gender, String secondName, List<Person> children) {
+        this.isParent = isParent;
         this.title = title;
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
         this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
         this.secondName = secondName;
         this.children = children;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
+    }
+
+    @JsonIgnore
+    public boolean isParent() {
+        return isParent;
+    }
+
+    public void setParent(boolean parent) {
+        isParent = parent;
     }
 
     public String getTitle() {
@@ -90,6 +113,14 @@ public class Parents {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public String getGender() {
+        return gender.name();
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
     public String getSecondName() {
         return secondName;
     }
@@ -98,11 +129,11 @@ public class Parents {
         this.secondName = secondName;
     }
 
-    public List<Parents> getChildren() {
+    public List<Person> getChildren() {
         return children;
     }
 
-    public void setChildren(List<Parents> children) {
+    public void setChildren(List<Person> children) {
         this.children = children;
     }
 }
