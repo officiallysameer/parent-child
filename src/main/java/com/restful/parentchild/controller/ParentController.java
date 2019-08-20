@@ -15,10 +15,8 @@ public class ParentController {
     @Autowired
     ParentService parentService;
 
-
     @GetMapping(path = "/parents")
     public List<Person> getAllParents() {
-
         return parentService.getAllParents();
     }
 

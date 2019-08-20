@@ -16,12 +16,11 @@ public class ParentServiceImpl implements ParentService {
 
     @Override
     public List<Person> getAllParents() {
-        return parentRepository.findAll();
+        return parentRepository.findAllParents();
     }
 
-    //TIO
     @Override
     public Person getParentById(int id) {
-        return parentRepository.findById(id);
+        return parentRepository.findParentById(id);
     }
 }
