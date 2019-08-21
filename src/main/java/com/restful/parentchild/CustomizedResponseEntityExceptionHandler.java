@@ -15,6 +15,6 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public final ResponseEntity<String> handleUserNotFoundException(ResourceNotFoundException ex, WebRequest request) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<String>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }

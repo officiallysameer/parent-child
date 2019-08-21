@@ -1,0 +1,15 @@
+{
+  "scenarioName": "Given an id, fetch the parent will all the children @@Sameer",
+  "steps": [
+    {
+      "name": "fetch_parent_with_2_children",
+      "url": "/parents/-1",
+      "operation": "GET",
+      "request": {
+      },
+      "assertions": {
+        "status": 404
+      }
+    }
+  ]
+}

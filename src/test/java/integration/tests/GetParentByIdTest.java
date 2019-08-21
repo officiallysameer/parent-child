@@ -14,4 +14,9 @@ public class GetParentByIdTest {
     @JsonTestCase("integration_tests/get/get_parent_by_id_test.json")
     public void test_getParentById() throws Exception {
     }
+
+    @Test
+    @JsonTestCase("integration_tests/get/get_parent_wrong_id_test.json")
+    public void test_getParentById_wrong_id() throws Exception {
+    }
 }

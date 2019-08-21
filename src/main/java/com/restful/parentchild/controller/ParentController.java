@@ -27,7 +27,7 @@ public class ParentController {
         Optional<Person> person = parentService.getParentById(id);
 
         if (!person.isPresent())
-            throw new ResourceNotFoundException("Could not find parent with id-" + id);
+            throw new ResourceNotFoundException("Could not find parent with id: " + id);
 
         return person.get();
     }
