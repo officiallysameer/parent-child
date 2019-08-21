@@ -1,15 +1,13 @@
 package com.restful.parentchild.controller;
 
-import com.restful.parentchild.exception.ResourceNotFoundException;
 import com.restful.parentchild.model.Person;
+import com.restful.parentchild.response.Response;
 import com.restful.parentchild.service.ParentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class ParentController {
@@ -24,12 +22,15 @@ public class ParentController {
 
     @GetMapping(path = "/parents/{id}")
     public Person getParentById(@PathVariable("id") int id) {
-        Optional<Person> person = parentService.getParentById(id);
+        return parentService.getParentById(id);
+    }
 
-        if (!person.isPresent())
-            throw new ResourceNotFoundException("Could not find parent with id: " + id);
+    @PostMapping(path = "/parents")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Response createNewParent(@RequestBody Person person) {
+        person.setParent(Boolean.TRUE);
+        return new Response(parentService.createParent(person), "Parent Created Successfully");
 
-        return person.get();
     }
 
 }

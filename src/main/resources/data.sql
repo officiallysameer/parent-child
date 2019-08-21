@@ -33,6 +33,5 @@ VALUES ('Mr', 'Donald', 'Trump', 'donald@trump.com', '1955-06-23', 'true', 'male
 
 INSERT INTO parent_children (parent_id, child_id)
 VALUES (1, 3),
-       (2, 3),
        (1, 4);
 

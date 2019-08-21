@@ -1,13 +1,16 @@
 package com.restful.parentchild.service;
 
 import com.restful.parentchild.model.Person;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
+@Service
 public interface ParentService {
 
     List<Person> getAllParents();
 
-    Optional<Person> getParentById(int id);
+    Integer createParent(Person person);
+
+    Person getParentById(int id);
 }

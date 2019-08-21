@@ -10,9 +10,10 @@ import java.util.List;
 public class Person {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    private boolean isParent;
+    private Boolean isParent = Boolean.FALSE;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String title;
@@ -35,7 +36,7 @@ public class Person {
     @Column(name = "second_name")
     private String secondName;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "parent_children",
             joinColumns =
             @JoinColumn(name = "parent_id", referencedColumnName = "ID"),
@@ -60,16 +61,16 @@ public class Person {
         this.children = children;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
     @JsonIgnore
-    public boolean isParent() {
+    public Boolean isParent() {
         return isParent;
     }
 
-    public void setParent(boolean parent) {
+    public void setParent(Boolean parent) {
         isParent = parent;
     }
 
