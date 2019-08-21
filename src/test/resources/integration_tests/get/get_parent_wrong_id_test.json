@@ -1,5 +1,5 @@
 {
-  "scenarioName": "Given an id, fetch the parent will all the children @@Sameer",
+  "scenarioName": "Given a wrong id, will return a 404 error @@Sameer",
   "steps": [
     {
       "name": "fetch_parent_with_2_children",

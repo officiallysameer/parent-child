@@ -1,10 +1,5 @@
 package integration;
 
-import integration.testrunner.ZerocodeSpringBootSuite;
-import org.jsmart.zerocode.core.domain.TargetEnv;
-import org.jsmart.zerocode.core.domain.TestPackageRoot;
-import org.junit.runner.RunWith;
-
 /**
  * IntegrationTestSuite runs all the tests as a suite by picking all the tests
  * from "resources/integration_tests" folder and sub-folders.
@@ -17,9 +12,9 @@ import org.junit.runner.RunWith;
  * - integrationtests.delete.VerifyDeleteOperation.java
  * - integrationtests.uploadfile.VerifyFileUpload.java
  */
-@TargetEnv("application_host.properties")
-@TestPackageRoot("integration_tests") //picks all tests from this folder and subfolders
-@RunWith(ZerocodeSpringBootSuite.class)
-public class IntegrationTestSuite {
-
-}
+//@TargetEnv("application_host.properties")
+//@TestPackageRoot("integration_tests") //picks all tests from this folder and subfolders
+//@RunWith(ZerocodeSpringBootSuite.class)
+//public class IntegrationTestSuite {
+//
+//}

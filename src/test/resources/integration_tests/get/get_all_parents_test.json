@@ -9,7 +9,7 @@
       },
       "assertions": {
         "status": 200,
-        "body.SIZE": 4,
+        "body.SIZE": "$GT.2",
         "body": [
           {
             "id": 1,
