@@ -65,6 +65,10 @@ public class Person {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     @JsonIgnore
     public Boolean isParent() {
         return isParent;

@@ -1,0 +1,106 @@
+{
+  "scenarioName": "Create new parent for update @@Sameer",
+  "steps": [
+    {
+      "name": "create_new_parent",
+      "url": "/parents",
+      "operation": "POST",
+      "request": {
+        "headers": {
+          "Content-Type": "application/json;charset=UTF-8"
+        },
+        "body": {
+          "title": "Mrs",
+          "firstName": "Tom",
+          "lastName": "Jerry",
+          "emailAddress": "tomandjerry@mgm.com",
+          "dateOfBirth": "1950-06-03",
+          "gender": "female",
+          "secondName": "",
+          "children": [
+            {
+              "firstName": "Minnie",
+              "lastName": "Mouse",
+              "emailAddress": "minnie@disney.com",
+              "dateOfBirth": "1960-05-22",
+              "gender": "female",
+              "secondName": ""
+            }
+          ]
+        }
+      },
+      "assertions": {
+        "status": 201
+      }
+    },
+    {
+      "name": "fetch_parents",
+      "url": "/parents/${$.create_new_parent.response.body.personId}",
+      "operation": "GET",
+      "request": {
+      },
+      "assertions": {
+        "status": 200,
+        "body": {
+          "firstName": "Tom",
+          "children": [
+            {
+              "emailAddress": "minnie@disney.com"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "update_parent",
+      "url": "/parents/${$.create_new_parent.response.body.personId}",
+      "operation": "PUT",
+      "request": {
+        "headers": {
+          "Content-Type": "application/json;charset=UTF-8"
+        },
+        "body": {
+          "title": "Mr",
+          "firstName": "Tom",
+          "lastName": "Jerry",
+          "emailAddress": "tomandjerry@mgm.com",
+          "dateOfBirth": "1950-06-03",
+          "gender": "male",
+          "secondName": "",
+          "children": [
+            {
+              "firstName": "Minnie",
+              "lastName": "Mouse",
+              "emailAddress": "minniemouse@disney.com",
+              "dateOfBirth": "1960-05-22",
+              "gender": "female",
+              "secondName": "Mrs Mickey Mouse"
+            }
+          ]
+        }
+      },
+      "assertions": {
+        "status": 200
+      }
+    },
+    {
+      "name": "fetch_updated_parent",
+      "url": "/parents/${$.create_new_parent.response.body.personId}",
+      "operation": "GET",
+      "request": {
+      },
+      "assertions": {
+        "status": 200,
+        "body": {
+          "title": "Mr",
+          "gender": "male",
+          "children": [
+            {
+              "emailAddress": "minniemouse@disney.com"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

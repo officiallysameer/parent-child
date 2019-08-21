@@ -1,6 +1,7 @@
 package com.restful.parentchild.service;
 
 import com.restful.parentchild.ParentRepository;
+import com.restful.parentchild.exception.BadRequestException;
 import com.restful.parentchild.exception.ResourceNotFoundException;
 import com.restful.parentchild.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +30,27 @@ public class ParentServiceImpl implements ParentService {
         return person.get();
     }
 
+    @Override
+    public Integer updateParent(Person person, int id) {
+        if (person == null) {
+            throw new BadRequestException("Empty body: Data is missing");
+        } else {
+            Person personToUpdate = getParentById(id);
+            person.setId(personToUpdate.getId());
+            parentRepository.save(person);
+            return person.getId();
+        }
+    }
+
+    @Override
     public Integer createParent(Person person) {
         if (person == null) {
-            throw new ResourceNotFoundException("Empty body: Data is missing");
+            throw new BadRequestException("Empty body: Data is missing");
         } else {
             parentRepository.save(person);
             return person.getId();
         }
     }
+
+
 }

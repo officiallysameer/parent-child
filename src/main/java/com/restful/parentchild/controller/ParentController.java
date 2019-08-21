@@ -33,4 +33,11 @@ public class ParentController {
 
     }
 
+    @PutMapping(path = "/parents/{id}")
+    public Response updateParent(@RequestBody Person person, @PathVariable("id") int id) {
+        person.setParent(Boolean.TRUE);
+        return new Response(parentService.updateParent(person, id), "Parent Updated Successfully");
+
+    }
+
 }
