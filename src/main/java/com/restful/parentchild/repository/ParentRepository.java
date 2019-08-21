@@ -1,4 +1,4 @@
-package com.restful.parentchild;
+package com.restful.parentchild.repository;
 
 import com.restful.parentchild.model.Person;
 import org.springframework.data.jpa.repository.JpaRepository;

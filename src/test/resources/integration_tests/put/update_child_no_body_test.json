@@ -1,0 +1,70 @@
+{
+  "scenarioName": "Test Child update empty body @@Sameer",
+  "steps": [
+    {
+      "name": "create_new_parent",
+      "url": "/parents",
+      "operation": "POST",
+      "request": {
+        "headers": {
+          "Content-Type": "application/json;charset=UTF-8"
+        },
+        "body": {
+          "title": "Mr",
+          "firstName": "Johnny",
+          "lastName": "Walker",
+          "emailAddress": "jw@jw.com",
+          "dateOfBirth": "1950-06-03",
+          "gender": "male",
+          "secondName": "",
+          "children": [
+            {
+              "firstName": "Tim",
+              "lastName": "Walker",
+              "emailAddress": "tim@jw.com",
+              "dateOfBirth": "1960-05-22",
+              "gender": "male",
+              "secondName": ""
+            }
+          ]
+        }
+      },
+      "assertions": {
+        "status": 201
+      }
+    },
+    {
+      "name": "fetch_parents",
+      "url": "/parents/${$.create_new_parent.response.body.personId}",
+      "operation": "GET",
+      "request": {
+      },
+      "assertions": {
+        "status": 200,
+        "body": {
+          "firstName": "Johnny",
+          "children": [
+            {
+              "emailAddress": "tim@jw.com"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "update_parent",
+      "url": "/children/${$.fetch_parents.response.body.children[0].id}",
+      "operation": "PUT",
+      "request": {
+        "headers": {
+          "Content-Type": "application/json;charset=UTF-8"
+        },
+        "body": {
+        }
+      },
+      "assertions": {
+        "status": 400
+      }
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 package com.restful.parentchild.service;
 
-import com.restful.parentchild.ParentRepository;
 import com.restful.parentchild.exception.BadRequestException;
 import com.restful.parentchild.exception.ResourceNotFoundException;
 import com.restful.parentchild.model.Person;
+import com.restful.parentchild.repository.ParentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

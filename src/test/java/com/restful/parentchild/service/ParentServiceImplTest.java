@@ -1,16 +1,17 @@
 package com.restful.parentchild.service;
 
-import com.restful.parentchild.ParentRepository;
 import com.restful.parentchild.exception.BadRequestException;
 import com.restful.parentchild.exception.ResourceNotFoundException;
 import com.restful.parentchild.model.Gender;
 import com.restful.parentchild.model.Person;
+import com.restful.parentchild.repository.ParentRepository;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +26,7 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
 import static org.mockito.ArgumentMatchers.any;
 
+@SpringBootTest
 @RunWith(SpringRunner.class)
 public class ParentServiceImplTest {
 
@@ -50,6 +52,9 @@ public class ParentServiceImplTest {
                 .thenReturn(Optional.of(new Person(true, "Mr", "Peter", "Rabbit",
                         "peter@peter.com", "1978-07-13", Gender.male, "second name",
                         null)));
+
+        Mockito.when(parentRepository.findParentById(11))
+                .thenReturn(Optional.of(savedPerson));
 
         Mockito.when(parentRepository.findParentById(-1))
                 .thenReturn(Optional.empty());
@@ -86,6 +91,7 @@ public class ParentServiceImplTest {
         parentService.createParent(person);
     }
 
+    @Test
     public void updateParentTest() {
 
         Person person = new Person(true, "Mr", "Peter", "Rabbit",

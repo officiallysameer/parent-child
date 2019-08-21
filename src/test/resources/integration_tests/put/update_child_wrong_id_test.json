@@ -1,0 +1,26 @@
+{
+  "scenarioName": "Test Child update wrong Id @@Sameer",
+  "steps": [
+    {
+      "name": "update_child",
+      "url": "/children/999",
+      "operation": "PUT",
+      "request": {
+        "headers": {
+          "Content-Type": "application/json;charset=UTF-8"
+        },
+        "body": {
+          "firstName": "Timmothy",
+          "lastName": "Walker",
+          "emailAddress": "tim@jw.com",
+          "dateOfBirth": "1960-05-22",
+          "gender": "male",
+          "secondName": ""
+        }
+      },
+      "assertions": {
+        "status": 404
+      }
+    }
+  ]
+}

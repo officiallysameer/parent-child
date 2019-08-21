@@ -1,4 +1,4 @@
-package com.restful.parentchild;
+package com.restful.parentchild.exception.handler;
 
 import com.restful.parentchild.exception.BadRequestException;
 import com.restful.parentchild.exception.ResourceNotFoundException;
