@@ -8,21 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-public class ParentController {
+public class ParentChildController {
 
     @Autowired
-    ParentService parentService;
+    private ParentService parentService;
 
     @Autowired
-    ChildrenService childrenService;
-
-    @GetMapping(path = "/parents")
-    public List<Person> getAllParents() {
-        return parentService.getAllParents();
-    }
+    private ChildrenService childrenService;
 
     @GetMapping(path = "/parents/{id}")
     public Person getParentById(@PathVariable("id") int id) {
@@ -34,14 +27,12 @@ public class ParentController {
     public Response createNewParent(@RequestBody Person person) {
         person.setParent(Boolean.TRUE);
         return new Response(parentService.createParent(person), "Parent Created Successfully");
-
     }
 
     @PutMapping(path = "/parents/{id}")
     public Response updateParent(@RequestBody Person person, @PathVariable("id") int id) {
         person.setParent(Boolean.TRUE);
         return new Response(parentService.updateParent(person, id), "Parent Updated Successfully");
-
     }
 
     @PutMapping(path = "/children/{id}")

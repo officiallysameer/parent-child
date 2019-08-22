@@ -2,7 +2,7 @@
   "scenarioName": "Given a wrong id, will return a 404 error @@Sameer",
   "steps": [
     {
-      "name": "fetch_parent_with_2_children",
+      "name": "fetch_parent_with_wrong Id",
       "url": "/parents/-1",
       "operation": "GET",
       "request": {

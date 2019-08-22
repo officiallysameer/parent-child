@@ -17,8 +17,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -43,11 +41,6 @@ public class ParentServiceImplTest {
                 null);
         savedPerson.setId(11);
 
-        Mockito.when(parentRepository.findAllParents())
-                .thenReturn(Arrays.asList(new Person(true, "Mr", "John", "Smith",
-                        "john@smith.com", "1978-07-13", Gender.male, "second name",
-                        null)));
-
         Mockito.when(parentRepository.findParentById(99))
                 .thenReturn(Optional.of(new Person(true, "Mr", "Peter", "Rabbit",
                         "peter@peter.com", "1978-07-13", Gender.male, "second name",
@@ -61,13 +54,6 @@ public class ParentServiceImplTest {
 
         Mockito.when(parentRepository.save(any()))
                 .thenReturn(savedPerson);
-    }
-
-    @Test
-    public void getAllParentsTest() {
-
-        List<Person> parentList = parentService.getAllParents();
-        assertThat(parentList, Matchers.hasSize(1));
     }
 
     @Test

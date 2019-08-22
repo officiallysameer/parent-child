@@ -42,8 +42,8 @@
       }
     },
     {
-      "name": "fetch_all_parents",
-      "url": "/parents",
+      "name": "verify_parent",
+      "url": "/parents/${$.create_new_parent_1.response.body.personId}",
       "operation": "GET",
       "request": {
       },

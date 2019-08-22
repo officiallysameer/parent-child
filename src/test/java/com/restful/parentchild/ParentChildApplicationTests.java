@@ -1,6 +1,6 @@
 package com.restful.parentchild;
 
-import com.restful.parentchild.controller.ParentController;
+import com.restful.parentchild.controller.ParentChildController;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -16,7 +16,7 @@ import static org.hamcrest.core.IsNull.notNullValue;
 public class ParentChildApplicationTests {
 
     @Autowired
-    private ParentController controller;
+    private ParentChildController controller;
 
 	@Test
 	public void contextLoads() {
