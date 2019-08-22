@@ -157,5 +157,6 @@ The REST API to the example app is described below.
     }
     
 ##Integration Tests
+
 Integration Tests are written using Zerocode library to achieve quicker and more complete test scenario coverages
 [zerocode](https://github.com/authorjapps/zerocode)
